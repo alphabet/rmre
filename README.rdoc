@@ -50,7 +50,7 @@ Otput directory can be set with:
 otherwise Rmre will create models in the directory where it is started.
 
 Rmre can also filter tables for which it will create models. Filtering is very basic and
-it mathes whether name of the table starts with passed patterns:
+it matches whether name of the table starts with passed patterns:
 
   -i ec_,vi_
   --include ic_,vi_

@@ -8,7 +8,7 @@ require "rmre"
 
 options = {:db => {}}
 optparse = OptionParser.new do |opts|
-  opts.banner = "Usage: rmre -a ADAPTER -d DATABASE [options]"
+  opts.banner = "Usage: rmre -a ADAPTER -d DATABASE -u USER -p PASSWORD --port PORT [options]"
 
   opts.on('-h', '--help', 'Display this screen') do
     puts opts
