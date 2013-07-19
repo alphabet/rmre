@@ -78,7 +78,7 @@ module Rmre
         generator.create_model('users')
       end
 
-      it "should set foreign key if FK column is not id" do
+      it "should set relationship foreign key if relationship FK column is not id" do
         generator.connection.stub(:primary_key).and_return('pst_id')
         generator.stub(:foreign_keys).and_return([
           { 'from_table' => 'posts',
@@ -92,6 +92,22 @@ module Rmre
 
         generator.create_model('posts')
       end
+
+      it "should set relationship primary key if relationship PK column is not id" do
+        generator.connection.stub(:primary_key).and_return('usr_id')
+        generator.stub(:foreign_keys).and_return([
+          { 'from_table' => 'posts',
+            'from_column' => 'post_id',
+            'to_table'=>'user',
+            'to_column'=>'uzer_id'}
+            ])
+
+        File.stub(:open).and_yield(@file)
+        @file.should_receive(:write).with(/:primary_key => :uzer_id/)
+
+        generator.create_model('posts')
+      end
+
     end
 
     context 'irregular plural table names' do
